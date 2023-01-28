@@ -36,17 +36,17 @@ function generateRandomInteger(max) {
     return Math.floor(Math.random() * max) + 1;
 }
 
-let numeroRandom = generateRandomInteger(2);
+let numeroRandom = generateRandomInteger(5);
 
     function appendData(data) {
         let mainContainer = document.getElementById("myData");
             let div = document.createElement("div");
             linebreak2 = document.createElement("br");
-            div.innerHTML = data[numeroRandom].pregunta + ' ' + data[numeroRandom].respuestacorrecta;
+            div.innerHTML = data[numeroRandom].pregunta;
             mainContainer.appendChild(div);
              mainContainer.appendChild(linebreak2);
             respuestacorrecta = data[numeroRandom].respuestacorrecta;
-            for (let i = 0; i < 6; i++) {
+            for (let i = 0; i < data[numeroRandom].preguntas.length; i++) {
     const label = document.createElement("label");
     const checkbox = document.createElement("input");
     linebreak = document.createElement("br");
@@ -58,6 +58,10 @@ let numeroRandom = generateRandomInteger(2);
     label.appendChild(checkbox);
     label.appendChild(textContent);
     label.appendChild(linebreak);
+    label.appendChild(linebreak);
+    label.appendChild(linebreak);
+    label.appendChild(linebreak);
+    label.appendChild(linebreak);
     document.body.appendChild(label);
     if("s"+i == respuestacorrecta)
     respuestacorrectaTexto = ""+ data[numeroRandom].preguntas[i];
@@ -67,40 +71,35 @@ let numeroRandom = generateRandomInteger(2);
     }
 
 function getCheckboxValue() {
-
+    var lang0= document.getElementById("s0");
   var lang1= document.getElementById("s1");
-  var lang2= document.getElementById("s0");
- var lang2= document.getElementById("s4");
- var lang2= document.getElementById("s5");
-  var lang2= document.getElementById("s2");
-  var lang3= document.getElementById("s3");
+   var lang2= document.getElementById("s2");
+   var lang3= document.getElementById("s3");
+ var lang4= document.getElementById("s4");
+ var lang5= document.getElementById("s5");
   var result= " ";
-  if (lang1.checked == true){
+  if (lang0.checked == true){
+    var lg0= document.getElementById("s0").id;
+    result= lg0 + "";
+  }
+  else if (lang1.checked == true){
     var lg1= document.getElementById("s1").id;
-    result= lg1 + "";
+    result= result + lg1 + " ";
   }
   else if (lang2.checked == true){
-    var lg2= document.getElementById("s2").id;
-    result= result + lg2 + " ";
+    var lg2= document.getElementById("2").id;
+    result= result + lg2 ;
   }
   else if (lang3.checked == true){
-  document.write(result);
     var lg3= document.getElementById("s3").id;
     result= result + lg3 ;
   }
-  else if (lang0.checked == true){
-  document.write(result);
-    var lg0= document.getElementById("s0").id;
-    result= result + lg0 ;
-  }
   else if (lang4.checked == true){
-  document.write(result);
     var lg4= document.getElementById("s4").id;
     result= result + lg4 ;
   }
   else if (lang5.checked == true){
-  document.write(result);
-    var lg3= document.getElementById("s5").id;
+    var lg5= document.getElementById("s5").id;
     result= result + lg5 ;
   }
    else {
@@ -108,14 +107,21 @@ function getCheckboxValue() {
   }
    if(result == respuestacorrecta){
     alert("Correct!");
+    var numPreguntas= document.getElementById("quesnum");
+    var numpreguntasnumero = parseInt(numPreguntas.value) +1
+    numPreguntas.value = numpreguntasnumero.toString();
+    var respuestaCorrectas= document.getElementById("respcor");
+    var respuestacorrectasnumero = parseInt(respuestaCorrectas.value) +1
+    respuestaCorrectas.value = respuestacorrectasnumero.toString();;
 }
 else{
     alert("The correct Answer is" + respuestacorrecta);
+    var numPreguntas= document.getElementById("quesnum");
+    var numpreguntasnumero = parseInt(numPreguntas.value) +1
+    numPreguntas.value = numpreguntasnumero.toString();
 }
-var numPreguntas= document.getElementById("quesnum");
-numPreguntas.value = "1";
-var numPreguntas= document.getElementById("respcor");
-numPreguntas.value = "0";
+
+
   return document.getElementById("result").innerHTML= "The correct answer is " + respuestacorrectaTexto;
 
 
@@ -123,17 +129,19 @@ numPreguntas.value = "0";
 
 </script>
 
-<h2>ANSWERS:</h2>
+
 <button onclick= "getCheckboxValue()">Check my answer!</button>
 <h4 id="result"></h4>
 
 <form action="/gpc/gpcquiz2.php" method="post">
     <label for="fname">Question Numer:</label>
-<input type="text"id="quesnum" value="<?php echo $correctos; ?>" name="quesnum" disabled><br>
+<input type="text"id="quesnum" value="<?php echo $correctos; ?>" name="respcor" ><br>
 <label for="fname">Correct Ones</label>
-<input type="text" id="respcor" value="<?php echo $numpre; ?>" name="respcor" disabled><br>
-<input type="submit">
-
+<input type="text" id="respcor" value="<?php echo $numpre; ?>" name="quesnum" ><br>
+<input type="submit" value="Next Question">
 </form>
+<br>
+<h2>ANSWERS:</h2>
+
 </body>
 </html>
