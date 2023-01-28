@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+</head>
+<body>
+  <img src="mona.jpg" width="400"
+     height="500" >
+<div id="myData"></div>
+<script type="text/javascript">
+    fetch('people.json')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            appendData(data);
+        })
+        .catch(function (err) {
+            console.log('error: ' + err);
+        });
+
+
+function generateRandomInteger(max) {
+    return Math.floor(Math.random() * max) + 1;
+}
+
+let numeroRandom = generateRandomInteger(2);
+
+    function appendData(data) {
+        let mainContainer = document.getElementById("myData");
+            let div = document.createElement("div");
+            linebreak2 = document.createElement("br");
+            div.innerHTML = data[numeroRandom].pregunta + ' ' + data[numeroRandom].respuestacorrecta;
+            mainContainer.appendChild(div);
+             mainContainer.appendChild(linebreak2);
+
+            for (let i = 0; i < 6; i++) {
+    const label = document.createElement("label");
+    const checkbox = document.createElement("input");
+    linebreak = document.createElement("br");
+
+    checkbox.type="checkbox";
+    checkbox.id=""+ data[numeroRandom].preguntas[i];
+    checkbox.name= checkbox.id;
+    const textContent = document.createTextNode(checkbox.id);
+    label.appendChild(checkbox);
+    label.appendChild(textContent);
+    label.appendChild(linebreak);
+    document.body.appendChild(label);
+            }
+    }
+    $(document).on("click", ".cbCheck", function () {
+    var value=$(this).attr("value");
+    alert(value);
+});
+</script>
+</body>
+</html>
