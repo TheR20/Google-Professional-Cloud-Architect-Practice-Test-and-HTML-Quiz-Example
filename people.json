@@ -35,5 +35,37 @@
       "pregunta": "A lead engineer wrote a custom tool that deploys virtual machines in the legacy data center. He wants to migrate the custom tool to the new cloud environment.You want to advocate for the adoption of Google Cloud Deployment Manager.What are two business risks of migrating to Cloud Deployment Manager? (Choose two.) ",
      "respuestacorrecta": ["s2","s4"],
        "preguntas": [{"id":"s0", "preg":"Cloud Deployment Manager uses Python"},{"id":"s1", "preg":"Cloud Deployment Manager APIs could be deprecated in the future"},{"id":"s2", "preg": "Cloud Deployment Manager is unfamiliar to the company's engineers"},{"id":"s3", "preg": "Cloud Deployment Manager requires a Google APIs service account to run"},{"id":"s4", "preg": "Cloud Deployment Manager can be used to permanently delete cloud resources"},{"id":"s5", "preg": "Cloud Deployment Manager only supports automation of Google Cloud resources"}]
+  },
+  {
+     "id":36,
+      "pregunta": "You created a pipeline that can deploy your source code changes to your infrastructure in instance groups for self-healing. One of the changes negatively affects your key performance indicator. You are not sure how to fix it, and investigation could take up to a week. What should you do?",
+     "respuestacorrecta": ["s1"],
+       "preguntas": [{"id":"s0", "preg":"Log in to a server, and iterate on the fox locally"},{"id":"s1", "preg":"Revert the source code change, and rerun the deployment pipeline"},{"id":"s2", "preg": "Log into the servers with the bad code change, and swap in the previous code"},{"id":"s3", "preg": "Change the instance group template to the previous one, and delete all instances"}]
+  },
+  {
+     "id":37,
+      "pregunta": "Your organization wants to control IAM policies for different departments independently, but centrally.Which approach should you take?",
+     "respuestacorrecta": ["s2"],
+       "preguntas": [{"id":"s0", "preg":"Multiple Organizations with multiple Folders"},{"id":"s1", "preg":"Multiple Organizations, one for each department"},{"id":"s2", "preg": "A single Organization with Folders for each department"},{"id":"s3", "preg": "A single Organization with multiple projects, each with a central owner"}]
+  },
+  {
+     "id":38,
+      "pregunta": "You deploy your custom Java application to Google App Engine. It fails to deploy and gives you the following stack trace.What should you do? [have an image]",
+     "respuestacorrecta": ["s1"],
+       "preguntas": [{"id":"s0", "preg":"Upload missing JAR files and redeploy your application."},{"id":"s1", "preg":"Digitally sign all of your JAR files and redeploy your application"},{"id":"s2", "preg": " Recompile the CLoakedServlet class using and MD5 hash instead of SHA1"},{"id":"s3", "preg": "A single Organization with multiple projects, each with a central owner"}]
+  },
+  {
+     "id":39,
+      "pregunta": "You deploy your custom Java application to Google App Engine. It fails to deploy and gives you the following stack trace.What should you do? [have an image]",
+     "respuestacorrecta": ["s3"],
+       "preguntas": [{"id":"s0", "preg":"Tag messages client side with the originating user identifier and the destination user."},{"id":"s1", "preg":"Encrypt the message client side using block-based encryption with a shared key."},{"id":"s2", "preg": "Use public key infrastructure (PKI) to encrypt the message client side using the originating user's private key"},{"id":"s3", "preg": "Use a trusted certificate authority to enable SSL connectivity between the client application and the server."}]
+  },
+  {
+     "id":40,
+      "pregunta": "As part of implementing their disaster recovery plan, your company is trying to replicate their production MySQL database from their private data center to their GCP project using a Google Cloud VPN connection. They are experiencing latency issues and a small amount of packet loss that is disrupting the replication.What should they do?",
+     "respuestacorrecta": ["s1"],
+       "preguntas": [{"id":"s0", "preg":"Configure their replication to use UDP."},{"id":"s1", "preg":"Configure a Google Cloud Dedicated Interconnect."},{"id":"s2", "preg": "Restore their database daily using Google Cloud SQL."},{"id":"s3", "preg": "Add additional VPN connections and load balance them."},
+       {"id":"s4", "preg": "Send the replicated transaction to Google Cloud Pub/Sub."}]
   }
+
 ]
