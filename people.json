@@ -1,44 +1,39 @@
-[[
+[
   {
      "id":1,
       "pregunta": "Your company has decided to make a major revision of their API in order to create better experiences for their developers. They need to keep the old version of the API available and deployable, while allowing new customers and testers to try out the new API. They want to keep the same SSL and DNS records in place to serve both APIs. What should they do?",
-      "tipo": "1",
-      "respuestacorrecta": "s3",
-       "preguntas": ["A. Configure a new load balancer for the new version of the API","B. Reconfigure old clients to use a new endpoint for the new API","C. Have the old API forward traffic to the new API based on the path", "D. Use separate backend pools for each API path behind the load balancer"]
+      "respuestacorrecta": ["s3"],
+       "preguntas": [{"id":"s0", "preg":"A. Configure a new load balancer for the new version of the API"},{"id":"s1", "preg":"B. Reconfigure old clients to use a new endpoint for the new API"},{"id":"s2", "preg": "C. Have the old API forward traffic to the new API based on the path"},{"id":"s3", "preg": "D. Use separate backend pools for each API path behind the load balancer"}]
   },
   {
      "id":2,
       "pregunta": "Your company plans to migrate a multi-petabyte data set to the cloud. The data set must be available 24hrs a day. Your business analysts have experience only with using a SQL interface. How should you store the data to optimize it for ease of analysis?",
-      "tipo": "1",
-      "respuestacorrecta": "s0",
-       "preguntas": ["A. Load data into Google BigQuery","B. Insert data into Google Cloud SQL","C. Put flat files into Google Cloud Storage", "D. Stream data into Google Cloud Datastore"]
+      "respuestacorrecta": ["s0"],
+       "preguntas": [{"id":"s0", "preg":"Load data into Google BigQuery"},{"id":"s1", "preg":"Insert data into Google Cloud SQL"},{"id":"s2", "preg": "Put flat files into Google Cloud Storage"},{"id":"s3", "preg": "Stream data into Google Cloud Datastore"}]
   },
-  {
+ {
      "id":3,
+
       "pregunta": "The operations manager asks you for a list of recommended practices that she should consider when migrating a J2EE application to the cloud.Which three practices should you recommend? (Choose three.)",
-      "tipo": "1",
-      "respuestacorrecta": "s0",
-       "preguntas": ["A. Port the application code to run on Google App Engine","B. Integrate Cloud Dataflow into the application to capture real-time metrics","C. Instrument the application with a monitoring tool like Stackdriver Debugger", "D. Select an automation framework to reliably provision the cloud infrastructure" ,"E. Deploy a continuous integration tool with automated testing in a staging environment", "F. Migrate from MySQL to a managed NoSQL database like Google Cloud Datastore or Bigtable"]
+      "respuestacorrecta": ["s0","s3","s4"],
+       "preguntas": [{"id":"s0", "preg":"Port the application code to run on Google App Engine"},{"id":"s1", "preg":"Integrate Cloud Dataflow into the application to capture real-time metrics"},{"id":"s2", "preg": "Instrument the application with a monitoring tool like Stackdriver Debugger"},{"id":"s3", "preg": "Select an automation framework to reliably provision the cloud infrastructure"},{"id":"s4", "preg":"Deploy a continuous integration tool with automated testing in a staging environment"},{"id":"s5", "preg":"Migrate from MySQL to a managed NoSQL database like Google Cloud Datastore or Bigtable"}]
   },
   {
      "id":4,
       "pregunta": "A news feed web service has the following code running on Google App Engine. During peak load, users report that they can see news articles they already viewed. What is the most likely cause of this problem? (this includes an image of the code)",
-      "tipo": "1",
-      "respuestacorrecta": "s0",
-       "preguntas": ["A. The session variable is local to just a single instance","B. The session variable is being overwritten in Cloud Datastore","C. The URL of the API needs to be modified to prevent caching", "D. The HTTP Expires header needs to be set to -1 stop caching"]
+      "respuestacorrecta": ["s0"],
+       "preguntas": [{"id":"s0", "preg":"The session variable is local to just a single instance"},{"id":"s1", "preg":"The session variable is being overwritten in Cloud Datastore"},{"id":"s2", "preg": "The URL of the API needs to be modified to prevent caching"},{"id":"s3", "preg": "The HTTP Expires header needs to be set to -1 stop caching"}]
   },
   {
      "id":5,
-      "pregunta": "An application development team believes their current logging tool will not meet their needs for their new cloud-based product. They want a better tool to capture errors and help them analyze their historical log data. You want to help them find a solution that meets their needs.What should you do?",
-      "tipo": "1",
-      "respuestacorrecta": "s0",
-       "preguntas": ["A. Direct them to download and install the Google StackDriver logging agent","B. Send them a list of online resources about logging best practices", "C. Help them define their requirements and assess viable logging tools" ,"D. Help them upgrade their current tool to take advantage of any new features"]
+       "pregunta": "An application development team believes their current logging tool will not meet their needs for their new cloud-based product. They want a better tool to capture errors and help them analyze their historical log data. You want to help them find a solution that meets their needs.What should you do?",
+      "respuestacorrecta": ["s0"],
+       "preguntas": [{"id":"s0", "preg":"Direct them to download and install the Google StackDriver logging agent"},{"id":"s1", "preg":"Send them a list of online resources about logging best practices"},{"id":"s2", "preg": "Help them define their requirements and assess viable logging tools"},{"id":"s3", "preg": "Help them upgrade their current tool to take advantage of any new features"}]
   },
   {
-      "id":30,
-      "pregunta": "A lead engineer wrote a custom tool that deploys virtual machines in the legacy data center. He wants to migrate the custom tool to the new cloud environment.You want to advocate for the adoption of Google Cloud Deployment Manager.What are two business risks of migrating to Cloud Deployment Manager? (Choose two.)    ",
-      "tipo": "1",
-      "respuestacorrecta": "s1",
-       "preguntas": ["A. Cloud Deployment Manager uses Python","B. Cloud Deployment Manager APIs could be deprecated in the future","C. Cloud Deployment Manager is unfamiliar to the company's engineers", "D. Cloud Deployment Manager requires a Google APIs service account to run", "E. Cloud Deployment Manager can be used to permanently delete cloud resources" ,"F. Cloud Deployment Manager only supports automation of Google Cloud resources"]
+     "id":30,
+      "pregunta": "A lead engineer wrote a custom tool that deploys virtual machines in the legacy data center. He wants to migrate the custom tool to the new cloud environment.You want to advocate for the adoption of Google Cloud Deployment Manager.What are two business risks of migrating to Cloud Deployment Manager? (Choose two.) ",
+     "respuestacorrecta": ["s2","s4"],
+       "preguntas": [{"id":"s0", "preg":"Cloud Deployment Manager uses Python"},{"id":"s1", "preg":"Cloud Deployment Manager APIs could be deprecated in the future"},{"id":"s2", "preg": "Cloud Deployment Manager is unfamiliar to the company's engineers"},{"id":"s3", "preg": "Cloud Deployment Manager requires a Google APIs service account to run"},{"id":"s4", "preg": "Cloud Deployment Manager can be used to permanently delete cloud resources"},{"id":"s5", "preg": "Cloud Deployment Manager only supports automation of Google Cloud resources"}]
   }
 ]

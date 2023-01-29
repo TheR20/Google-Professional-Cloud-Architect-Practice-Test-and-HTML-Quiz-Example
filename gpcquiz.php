@@ -7,7 +7,7 @@
     <title>Title</title>
 </head>
 <body>
-  <img src="googleg1.jpg" width="400"
+  <img src="googleg1.jpg" id="monachina" width="800"
      height="500" >
 
     <?$correctos = $_POST["respcor"]?>
@@ -19,8 +19,9 @@
 let respuestacorrecta = "";
 let respuestacorrectaTexto = "";
 let tamanioarrayrespuestas = "";
-let tamaniorespuestas = ""
-
+let tamaniorespuestas = "";
+let arraypreguntas = [];
+let arraypreguntasrandom = [];
     fetch('people.json')
         .then(function (response) {
             return response.json();
@@ -50,23 +51,58 @@ let numeroRandom = generateRandomInteger(5);
         mainContainer.appendChild(div);
         mainContainer.appendChild(linebreak2);
 
+
+
+   function createuniqueRan() {
+  let arrayContainer = []; // this arrays holds the five random numbers generated;
+  let displayContainer = document.getElementById("array");
+  const genNum = Math.floor(Math.random() * data[numeroRandom].preguntas.length);
+  arraypreguntasrandom.push(genNum);
+  console.time();
+  for (let counter = 0; counter < data[numeroRandom].preguntas.length-1; counter++) {
+    //the counter is less than five because we already initialise arraypreguntasrandom[0] with genNum
+    let newGen = Math.floor(Math.random() * data[numeroRandom].preguntas.length);
+    while (arraypreguntasrandom.lastIndexOf(newGen) !== -1) {
+      newGen = Math.floor(Math.random() * data[numeroRandom].preguntas.length);
+    }
+    arraypreguntasrandom.push(newGen);
+  }
+    }
+
+createuniqueRan();
+//generateUniqueRandom(10)
+
+
             //Con la data del json traemos las preguntas y las metemos en checkbox
             for (let i = 0; i < data[numeroRandom].preguntas.length; i++)
             {
+
+              // let numero= generateUniqueRandom(data[numeroRandom].preguntas.length);
+                //alert("numero unico "+ numero);
+                 //let numero= 1
+
+
                 const label = document.createElement("label");
                 const checkbox = document.createElement("input");
                 linebreak = document.createElement("br");
                 checkbox.type="checkbox";
-                checkbox.id= "s"+i;
+                checkbox.id= data[numeroRandom].preguntas[arraypreguntasrandom[i]].id;
+                //alert("numero unico "+ arraypreguntasrandom[i])
+               // alert("El id es "+ data[numeroRandom].preguntas[i].id)
                 checkbox.name=""+ data[numeroRandom].id;
-                checkbox.value = ""+ data[numeroRandom].preguntas[i];
-                const textContent = document.createTextNode(data[numeroRandom].preguntas[i]);
+                checkbox.value = ""+ data[numeroRandom].preguntas[arraypreguntasrandom[i]].preg;
+                const textContent = document.createTextNode(data[numeroRandom].preguntas[arraypreguntasrandom[i]].preg);
+               // alert("La pregunta es "+ data[numeroRandom].preguntas[i].preg[i])
                 label.appendChild(checkbox);
                 label.appendChild(textContent);
                 label.appendChild(linebreak);
                 label.appendChild(linebreak);
                 label.appendChild(linebreak);
+                label.appendChild(linebreak);
+                label.appendChild(linebreak);
                 document.body.appendChild(label);
+
+
             }
             tamaniorespuestas = data[numeroRandom].preguntas.length
             tamanioarrayrespuestas = data[numeroRandom].respuestacorrecta.length;
@@ -74,8 +110,7 @@ let numeroRandom = generateRandomInteger(5);
                 for(respuestas of data[numeroRandom].respuestacorrecta)
                 {
                     var matches = respuestas.match(/\d+/)[0];
-                    alert("Son una respuesta  " + matches)
-                    respuestacorrectaTexto = respuestacorrectaTexto+"<br>" + data[numeroRandom].preguntas[matches];
+                    respuestacorrectaTexto = respuestacorrectaTexto+"<br>" + data[numeroRandom].preguntas[matches].preg;
                 }
     }
     function singlecheckbox(resultado){
@@ -98,11 +133,13 @@ let numeroRandom = generateRandomInteger(5);
             result = result + singlecheckbox ("s"+i)
         }
         var resultsincomas = respuestacorrecta.split(',').join('');
+        var fotomonachina= document.getElementById("monachina");
+        var numPreguntas= document.getElementById("quesnum");
+        var numpreguntasnumero = parseInt(numPreguntas.value) +1
          if(result == respuestacorrecta.replaceAll(',',''))
          {
            // alert("Correct!");
-            var numPreguntas= document.getElementById("quesnum");
-            var numpreguntasnumero = parseInt(numPreguntas.value) +1
+            fotomonachina.src = "googleg3.jpg";
             numPreguntas.value = numpreguntasnumero.toString();
             var respuestaCorrectas= document.getElementById("respcor");
             var respuestacorrectasnumero = parseInt(respuestaCorrectas.value) +1 ;
@@ -113,8 +150,7 @@ let numeroRandom = generateRandomInteger(5);
          else
          {
             //alert("The correct Answer is" + respuestacorrecta.replaceAll(',',''));
-            var numPreguntas= document.getElementById("quesnum");
-            var numpreguntasnumero = parseInt(numPreguntas.value) +1
+            fotomonachina.src = "googleg2.jpg";
             numPreguntas.value = numpreguntasnumero.toString();
             return document.getElementById("result").innerHTML= "TRY AGAIN!"+ "<br>" + "The correct answer is " + respuestacorrectaTexto;
          }
