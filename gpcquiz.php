@@ -7,19 +7,20 @@
     <title>Title</title>
 </head>
 <body>
-  <img src="mona.jpg" width="400"
+  <img src="googleg1.jpg" width="400"
      height="500" >
 
-      <?$correctos = $_POST["respcor"]?>
-           <? $numpre = $_POST["quesnum"]?>
-
-
+    <?$correctos = $_POST["respcor"]?>
+    <? $numpre = $_POST["quesnum"]?>
 
 <div id="myData"></div>
 <script type="text/javascript">
 
 let respuestacorrecta = "";
 let respuestacorrectaTexto = "";
+let tamanioarrayrespuestas = "";
+let tamaniorespuestas = ""
+
     fetch('people.json')
         .then(function (response) {
             return response.json();
@@ -31,102 +32,93 @@ let respuestacorrectaTexto = "";
             console.log('error: ' + err);
         });
 
-
-function generateRandomInteger(max) {
-    return Math.floor(Math.random() * max) + 1;
-}
+    //Generamos un numero random
+    function generateRandomInteger(max)
+    {
+        return Math.floor(Math.random() * max) + 1;
+    }
 
 let numeroRandom = generateRandomInteger(5);
 
-    function appendData(data) {
+    //Traemos la data del Json y la metemos en divs
+    function appendData(data)
+    {
         let mainContainer = document.getElementById("myData");
-            let div = document.createElement("div");
-            linebreak2 = document.createElement("br");
-            div.innerHTML = data[numeroRandom].pregunta;
-            mainContainer.appendChild(div);
-             mainContainer.appendChild(linebreak2);
-            respuestacorrecta = data[numeroRandom].respuestacorrecta;
-            for (let i = 0; i < data[numeroRandom].preguntas.length; i++) {
-    const label = document.createElement("label");
-    const checkbox = document.createElement("input");
-    linebreak = document.createElement("br");
-    checkbox.type="checkbox";
-    checkbox.id= "s"+i;
-    checkbox.name=""+ data[numeroRandom].id;
-    checkbox.value = ""+ data[numeroRandom].preguntas[i];
-    const textContent = document.createTextNode(data[numeroRandom].preguntas[i]);
-    label.appendChild(checkbox);
-    label.appendChild(textContent);
-    label.appendChild(linebreak);
-    label.appendChild(linebreak);
-    label.appendChild(linebreak);
-    label.appendChild(linebreak);
-    label.appendChild(linebreak);
-    document.body.appendChild(label);
-    if("s"+i == respuestacorrecta)
-    respuestacorrectaTexto = ""+ data[numeroRandom].preguntas[i];
+        let div = document.createElement("div");
+        linebreak2 = document.createElement("br");
+        div.innerHTML = data[numeroRandom].pregunta;
+        mainContainer.appendChild(div);
+        mainContainer.appendChild(linebreak2);
+
+            //Con la data del json traemos las preguntas y las metemos en checkbox
+            for (let i = 0; i < data[numeroRandom].preguntas.length; i++)
+            {
+                const label = document.createElement("label");
+                const checkbox = document.createElement("input");
+                linebreak = document.createElement("br");
+                checkbox.type="checkbox";
+                checkbox.id= "s"+i;
+                checkbox.name=""+ data[numeroRandom].id;
+                checkbox.value = ""+ data[numeroRandom].preguntas[i];
+                const textContent = document.createTextNode(data[numeroRandom].preguntas[i]);
+                label.appendChild(checkbox);
+                label.appendChild(textContent);
+                label.appendChild(linebreak);
+                label.appendChild(linebreak);
+                label.appendChild(linebreak);
+                document.body.appendChild(label);
             }
-
-
+            tamaniorespuestas = data[numeroRandom].preguntas.length
+            tamanioarrayrespuestas = data[numeroRandom].respuestacorrecta.length;
+            respuestacorrecta = respuestacorrecta + data[numeroRandom].respuestacorrecta;
+                for(respuestas of data[numeroRandom].respuestacorrecta)
+                {
+                    var matches = respuestas.match(/\d+/)[0];
+                    alert("Son una respuesta  " + matches)
+                    respuestacorrectaTexto = respuestacorrectaTexto+"<br>" + data[numeroRandom].preguntas[matches];
+                }
     }
-
-function getCheckboxValue() {
-    var lang0= document.getElementById("s0");
-  var lang1= document.getElementById("s1");
-   var lang2= document.getElementById("s2");
-   var lang3= document.getElementById("s3");
- var lang4= document.getElementById("s4");
- var lang5= document.getElementById("s5");
-  var result= " ";
-  if (lang0.checked == true){
-    var lg0= document.getElementById("s0").id;
-    result= lg0 + "";
-  }
-  else if (lang1.checked == true){
-    var lg1= document.getElementById("s1").id;
-    result= result + lg1 + " ";
-  }
-  else if (lang2.checked == true){
-    var lg2= document.getElementById("2").id;
-    result= result + lg2 ;
-  }
-  else if (lang3.checked == true){
-    var lg3= document.getElementById("s3").id;
-    result= result + lg3 ;
-  }
-  else if (lang4.checked == true){
-    var lg4= document.getElementById("s4").id;
-    result= result + lg4 ;
-  }
-  else if (lang5.checked == true){
-    var lg5= document.getElementById("s5").id;
-    result= result + lg5 ;
-  }
-   else {
-  return document.getElementById("result").innerHTML= "Select any one";
-  }
-   if(result == respuestacorrecta){
-    alert("Correct!");
-    var numPreguntas= document.getElementById("quesnum");
-    var numpreguntasnumero = parseInt(numPreguntas.value) +1
-    numPreguntas.value = numpreguntasnumero.toString();
-    var respuestaCorrectas= document.getElementById("respcor");
-    var respuestacorrectasnumero = parseInt(respuestaCorrectas.value) +1
-    respuestaCorrectas.value = respuestacorrectasnumero.toString();;
-}
-else{
-    alert("The correct Answer is" + respuestacorrecta);
-    var numPreguntas= document.getElementById("quesnum");
-    var numpreguntasnumero = parseInt(numPreguntas.value) +1
-    numPreguntas.value = numpreguntasnumero.toString();
-}
-
-
-  return document.getElementById("result").innerHTML= "The correct answer is " + respuestacorrectaTexto;
-
-
-}
-
+    function singlecheckbox(resultado){
+        var checkboxsimple= document.getElementById(resultado);
+        var result= " ";
+        if (checkboxsimple.checked == true)
+          {
+            var idcheckboxsimple= document.getElementById(resultado).id;
+            result = idcheckboxsimple + "";
+          }
+          else
+            result = ""
+         return result ;
+    }
+    //Revisamos cada checkbox si esta checkeado trayendolo con el ID
+    function getCheckboxValue()
+    {
+        var result= "";
+        for(let i = 0; i<tamaniorespuestas; i++){
+            result = result + singlecheckbox ("s"+i)
+        }
+        var resultsincomas = respuestacorrecta.split(',').join('');
+         if(result == respuestacorrecta.replaceAll(',',''))
+         {
+           // alert("Correct!");
+            var numPreguntas= document.getElementById("quesnum");
+            var numpreguntasnumero = parseInt(numPreguntas.value) +1
+            numPreguntas.value = numpreguntasnumero.toString();
+            var respuestaCorrectas= document.getElementById("respcor");
+            var respuestacorrectasnumero = parseInt(respuestaCorrectas.value) +1 ;
+            respuestaCorrectas.value = respuestacorrectasnumero.toString();
+            //Se despliega la respuesta correcta en el h4
+         return document.getElementById("result").innerHTML= "CORRECT!!"+ "<br>" + "The correct answer is " + respuestacorrectaTexto;
+        }
+         else
+         {
+            //alert("The correct Answer is" + respuestacorrecta.replaceAll(',',''));
+            var numPreguntas= document.getElementById("quesnum");
+            var numpreguntasnumero = parseInt(numPreguntas.value) +1
+            numPreguntas.value = numpreguntasnumero.toString();
+            return document.getElementById("result").innerHTML= "TRY AGAIN!"+ "<br>" + "The correct answer is " + respuestacorrectaTexto;
+         }
+    }
 </script>
 
 
