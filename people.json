@@ -66,6 +66,67 @@
      "respuestacorrecta": ["s1"],
        "preguntas": [{"id":"s0", "preg":"Configure their replication to use UDP."},{"id":"s1", "preg":"Configure a Google Cloud Dedicated Interconnect."},{"id":"s2", "preg": "Restore their database daily using Google Cloud SQL."},{"id":"s3", "preg": "Add additional VPN connections and load balance them."},
        {"id":"s4", "preg": "Send the replicated transaction to Google Cloud Pub/Sub."}]
+  },
+  {
+     "id":41,
+      "pregunta": "Your customer support tool logs all email and chat conversations to Cloud Bigtable for retention and analysis. What is the recommended approach for sanitizing this data of personally identifiable information or payment card information before initial storage?",
+     "respuestacorrecta": ["s2"],
+       "preguntas": [{"id":"s0", "preg":"Hash all data using SHA256"},{"id":"s1", "preg":"Encrypt all data using elliptic curve cryptography"},{"id":"s2", "preg": " De-identify the data with the Cloud Data Loss Prevention API "},{"id":"s3", "preg": "Use regular expressions to find and redact phone numbers, email addresses, and credit card numbers"}]
+  },
+  {
+     "id":42,
+      "pregunta": "You are using Cloud Shell and need to install a custom utility for use in a few weeks. Where can you store the file so it is in the default execution path and persists across sessions?",
+     "respuestacorrecta": ["s0"],
+       "preguntas": [{"id":"s0", "preg":"~/bin "},{"id":"s1", "preg":"Cloud Storage"},{"id":"s2", "preg": " /google/scripts "},{"id":"s3", "preg": "/usr/local/bin"}]
+  },
+  {
+     "id":43,
+      "pregunta": "You want to create a private connection between your instances on Compute Engine and your on-premises data center. You require a connection of at least 20Gbps. You want to follow Google-recommended practices. How should you set up the connection?",
+     "respuestacorrecta": ["s0"],
+       "preguntas": [{"id":"s0", "preg":"Create a VPC and connect it to your on-premises data center using Dedicated Interconnect."},{"id":"s1", "preg":"Create a VPC and connect it to your on-premises data center using a single Cloud VPN."},{"id":"s2", "preg": "Create a Cloud Content Delivery Network (Cloud CDN) and connect it to your on-premises data center using Dedicated Interconnect."},{"id":"s3", "preg": "Create a Cloud Content Delivery Network (Cloud CDN) and connect it to your on-premises datacenter using a single Cloud VPN."}]
+  },
+  {
+     "id":44,
+      "pregunta": "You are analyzing and defining business processes to support your startup's trial usage of GCP, and you don't yet know what consumer demand for your product will be. Your manager requires you to minimize GCP service costs and adhere to Google best practices. What should you do?",
+     "respuestacorrecta": ["s1"],
+       "preguntas": [{"id":"s0", "preg":"Utilize free tier and sustained use discounts. Provision a staff position for service cost management."},{"id":"s1", "preg":" Utilize free tier and sustained use discounts. Provide training to the team about service cost management."},{"id":"s2", "preg": " Utilize free tier and committed use discounts. Provision a staff position for service cost management."},{"id":"s3", "preg": "Utilize free tier and committed use discounts. Provide training to the team about service cost management."}]
+  },
+  {
+     "id":45,
+      "pregunta": "You are building a continuous deployment pipeline for a project stored in a Git source repository and want to ensure that code changes can be verified before deploying to production. What should you do?",
+     "respuestacorrecta": ["s3"],
+       "preguntas": [{"id":"s0", "preg":"Use Spinnaker to deploy builds to production using the red/black deployment strategy so that changes can easily be rolled back."},{"id":"s1", "preg":"Use Spinnaker to deploy builds to production and run tests on production deployments."},{"id":"s2", "preg": "Use Jenkins to build the staging branches and the master branch. Build and deploy changes to production for 10% of users before doing a complete rollout."},{"id":"s3", "preg": " Use Jenkins to monitor tags in the repository. Deploy staging tags to a staging environment for testing. After testing, tag the repository for production and deploy that to the production environment."}]
+  },
+  {
+     "id":46,
+      "pregunta": "You have an outage in your Compute Engine managed instance group: all instances keep restarting after 5 seconds. You have a health check configured, but autoscaling is disabled. Your colleague, who is a Linux expert, offered to look into the issue. You need to make sure that he can access the VMs. What should you do?",
+     "respuestacorrecta": ["s2"],
+       "preguntas": [{"id":"s0", "preg":"Grant your colleague the IAM role of project Viewer"},{"id":"s1", "preg":" Perform a rolling restart on the instance group"},{"id":"s2", "preg": "Disable the health check for the instance group. Add his SSH key to the project-wide SSH Keys"},{"id":"s3", "preg": "Disable autoscaling for the instance group. Add his SSH key to the project-wide SSH Keys"}]
+  },
+  {
+     "id":47,
+      "pregunta": "Your company is migrating its on-premises data center into the cloud. As part of the migration, you want to integrate Google Kubernetes Engine (GKE) for workload orchestration. Parts of your architecture must also be PCI DSS-compliant. Which of the following is most accurate?",
+     "respuestacorrecta": ["s2"],
+       "preguntas": [{"id":"s0", "preg":"App Engine is the only compute platform on GCP that is certified for PCI DSS hosting."},{"id":"s1", "preg":"GKE cannot be used under PCI DSS because it is considered shared hosting."},{"id":"s2", "preg": "GKE and GCP provide the tools you need to build a PCI DSS-compliant environment."},{"id":"s3", "preg": " All Google Cloud services are usable because Google Cloud Platform is certified PCI-compliant."}]
+  },
+  {
+     "id":48,
+      "pregunta": "Your company has multiple on-premises systems that serve as sources for reporting. The data has not been maintained well and has become degraded over time.You want to use Google-recommended practices to detect anomalies in your company data. What should you do?",
+     "respuestacorrecta": ["s1"],
+       "preguntas": [{"id":"s0", "preg":"Upload your files into Cloud Storage. Use Cloud Datalab to explore and clean your data."},{"id":"s1", "preg":"Upload your files into Cloud Storage. Use Cloud Dataprep to explore and clean your data. "},{"id":"s2", "preg": "Connect Cloud Datalab to your on-premises systems. Use Cloud Datalab to explore and clean your data."},{"id":"s3", "preg": " Connect Cloud Dataprep to your on-premises systems. Use Cloud Dataprep to explore and clean your data."}]
+  },
+  {
+     "id":49,
+      "pregunta": "Google Cloud Platform resources are managed hierarchically using organization, folders, and projects. When Cloud Identity and Access Management (IAM) policies exist at these different levels, what is the effective policy at a particular node of the hierarchy?",
+     "respuestacorrecta": ["s2"],
+       "preguntas": [{"id":"s0", "preg":"The effective policy is determined only by the policy set at the node"},{"id":"s1", "preg":"The effective policy is the policy set at the node and restricted by the policies of its ancestors"},{"id":"s2", "preg": "The effective policy is the union of the policy set at the node and policies inherited from its ancestors"},{"id":"s3", "preg": "The effective policy is the intersection of the policy set at the node and policies inherited from its ancestors"}]
+  },
+  {
+     "id":50,
+      "pregunta": "You are migrating your on-premises solution to Google Cloud in several phases. You will use Cloud VPN to maintain a connection between your on-premises systems and Google Cloud until the migration is completed. You want to make sure all your on-premise systems remain reachable during this period. How should you organize your networking in Google Cloud?",
+     "respuestacorrecta": ["s2"],
+       "preguntas": [{"id":"s0", "preg":"Use the same IP range on Google Cloud as you use on-premises"},{"id":"s1", "preg":" Use the same IP range on Google Cloud as you use on-premises for your primary IP range and use a secondary range that does not overlap with the range you use on-premises"},{"id":"s2", "preg": " Use an IP range on Google Cloud that does not overlap with the range you use on-premises"},{"id":"s3", "preg": "Use an IP range on Google Cloud that does not overlap with the range you use on-premises for your primary IP range and use a secondary range with the same IP range as you use on-premises"}]
   }
+
 
 ]

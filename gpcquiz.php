@@ -7,12 +7,21 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
-<body>
-    <br><br>
-    <div class="field has-addons has-addons-centered">
-<img src="googleg1.jpg" id="monachina" width="250"
-     height="100" >
-</div>
+<style>
+    .center{
+      display: flex;
+      flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    },
+  .bold{
+
+font-weight:900;
+    }
+
+</style>
+<body style="background-color:#F0EDE5;">
+    <br>
 
 
     <?$correctos = $_POST["respcor"]?>
@@ -44,7 +53,7 @@ let arraypreguntasrandom = [];
         return Math.floor(Math.random() * max) + 1;
     }
 
-let numeroRandom = generateRandomInteger(11);
+let numeroRandom = generateRandomInteger(21);
 
     //Traemos la data del Json y la metemos en divs
     function appendData(data)
@@ -54,6 +63,7 @@ let numeroRandom = generateRandomInteger(11);
         linebreak2 = document.createElement("br");
         div.innerHTML = data[numeroRandom].pregunta;
          div.classList.add('container') ;
+         div.style.fontWeight = "bold";
         mainContainer.appendChild(div);
         mainContainer.appendChild(linebreak2);
 
@@ -78,14 +88,17 @@ let numeroRandom = generateRandomInteger(11);
 
 //Generamos numeros random que no se repitan que usaremos para acomodar las preguntas.
 createuniqueRan();
+                 let div2 = document.createElement("div");
+                 let div3 = document.createElement("div");
+                 let divpreguntas = document.getElementById("preguntas");
+                 div3.classList.add('center') ;
 
             //Con la data del json traemos las preguntas y las metemos en checkbox
             for (let i = 0; i < data[numeroRandom].preguntas.length; i++)
             {
                 const label = document.createElement("label");
                 const checkbox = document.createElement("input");
-                let div2 = document.createElement("div");
-                 div2.classList.add('container') ;
+
                 linebreak = document.createElement("br");
                 checkbox.type="checkbox";
                 checkbox.id= data[numeroRandom].preguntas[arraypreguntasrandom[i]].id;
@@ -95,18 +108,18 @@ createuniqueRan();
                 checkbox.value = ""+ data[numeroRandom].preguntas[arraypreguntasrandom[i]].preg;
                 const textContent = document.createTextNode(data[numeroRandom].preguntas[arraypreguntasrandom[i]].preg);
                // alert("La pregunta es "+ data[numeroRandom].preguntas[i].preg[i])
-               label.appendChild(div2);
-
+              /// label.appendChild(div2);
                 label.appendChild(checkbox);
                 label.appendChild(textContent);
+                //label.appendChild(linebreak);
 
-                label.appendChild(linebreak);
-                label.appendChild(linebreak);
-                label.appendChild(linebreak);
-                label.appendChild(linebreak);
-                label.appendChild(linebreak);
+                div2.appendChild(label);
+                div2.appendChild(linebreak);
+                 div3.appendChild(div2);
 
-                document.body.appendChild(label);
+                 divpreguntas.appendChild(div3);
+                //document.body.appendChild(div3);
+
 
             }
             tamaniorespuestas = data[numeroRandom].preguntas.length
@@ -141,14 +154,14 @@ createuniqueRan();
             result = result + singlecheckbox ("s"+i)
         }
         var resultsincomas = respuestacorrecta.split(',').join('');
-        var fotomonachina= document.getElementById("monachina");
+       // var fotomonachina= document.getElementById("monachina");
         var numPreguntas= document.getElementById("quesnum");
         var numpreguntasnumero = parseInt(numPreguntas.value) +1
          if(result == respuestacorrecta.replaceAll(',',''))
          {
            // alert("Correct!");
 
-            fotomonachina.src = "googleg3.jpg";
+            //fotomonachina.src = "googleg3.jpg";
             numPreguntas.value = numpreguntasnumero.toString();
             var respuestaCorrectas= document.getElementById("respcor");
             var respuestacorrectasnumero = parseInt(respuestaCorrectas.value) +1 ;
@@ -162,7 +175,7 @@ createuniqueRan();
          {
 
             //alert("The correct Answer is" + respuestacorrecta.replaceAll(',',''));
-            fotomonachina.src = "googleg2.jpg";
+          //  fotomonachina.src = "googleg2.jpg";
             numPreguntas.value = numpreguntasnumero.toString();
             checkitsdone();
            // alert("Ya Acabaste wey no");
@@ -186,26 +199,41 @@ createuniqueRan();
 
 </script>
 
+
+<div class="field has-addons has-addons-centered" id="divpreguntaprincipal">
+
+</div>
+
 <div class="field has-addons has-addons-centered">
 <button onclick= "getCheckboxValue()" class="button is-success" id="botonchecar">Check my answer!</button>
 <button onclick= "getCheckboxValue()" class="button is-warning" id="botonreiniciar" disabled>Restart Exam!</button>
 </div>
+<div>
 <div class="field has-addons has-addons-centered">
-    <h2 id="resultfinal"></h2>
-<h2 id="result"></h2>
+    <h2 id="resultfinal" style="font-weight:700;"></h2>
+<h2 id="result" style="font-weight:600;"></h2>
+    </div>
     </div>
  <div class="field has-addons has-addons-centered">
 <form action="/gpc/gpcquiz.php" method="post">
     <label for="fname">Question Number:</label>
-<input type="text"id="quesnum" class="label" value="<?php echo $correctos; ?>" name="respcor" ><br>
+<input type="text"id="quesnum" class="label" value="<?php echo $correctos; ?>" name="respcor" >
 <label for="fname">Correct Ones</label>
-<input type="text" class="label" id="respcor" value="<?php echo $numpre; ?>" name="quesnum" ><br>
+<input type="text" class="label" id="respcor" value="<?php echo $numpre; ?>" name="quesnum" >
 <input type="submit" id="botonenviar" class="button is-info" value="Next Question" disabled>
 </form>
+<!--
+       <div class="centroMargen">
+<img src="googleg1.jpg" id="monachina" width="180"
+     height="100" >
+</div>-->
 </div>
 </div>
 <br>
-<h2>ANSWERS:</h2>
-
+<div class="field has-addons has-addons-centered">
+<h2 class="bold" style="font-weight:900;">ANSWERS:</h2> <br>
+</div>
+<div class="field has-addons has-addons-centered" id= "preguntas">
+</div>
 </body>
 </html>
