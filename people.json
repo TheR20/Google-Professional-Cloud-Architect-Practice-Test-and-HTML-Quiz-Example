@@ -126,7 +126,47 @@
       "pregunta": "You are migrating your on-premises solution to Google Cloud in several phases. You will use Cloud VPN to maintain a connection between your on-premises systems and Google Cloud until the migration is completed. You want to make sure all your on-premise systems remain reachable during this period. How should you organize your networking in Google Cloud?",
      "respuestacorrecta": ["s2"],
        "preguntas": [{"id":"s0", "preg":"Use the same IP range on Google Cloud as you use on-premises"},{"id":"s1", "preg":" Use the same IP range on Google Cloud as you use on-premises for your primary IP range and use a secondary range that does not overlap with the range you use on-premises"},{"id":"s2", "preg": " Use an IP range on Google Cloud that does not overlap with the range you use on-premises"},{"id":"s3", "preg": "Use an IP range on Google Cloud that does not overlap with the range you use on-premises for your primary IP range and use a secondary range with the same IP range as you use on-premises"}]
+  },
+  {
+     "id":51,
+      "pregunta": "You have found an error in your App Engine application caused by missing Cloud Datastore indexes. You have created a YAML file with the required indexes and want to deploy these new indexes to Cloud Datastore. What should you do?",
+     "respuestacorrecta": ["s0"],
+       "preguntas": [{"id":"s0", "preg":"Point gcloud datastore create-indexes to your configuration file"},{"id":"s1", "preg":" Upload the configuration file to App Engine's default Cloud Storage bucket, and have App Engine detect the new indexes"},{"id":"s2", "preg": " In the GCP Console, use Datastore Admin to delete the current indexes and upload the new configuration file"},{"id":"s3", "preg": "Create an HTTP request to the built-in python module to send the index configuration file to your application"}]
+  },
+  {
+     "id":52,
+      "pregunta": "You have an application that will run on Compute Engine. You need to design an architecture that takes into account a disaster recovery plan that requires your application to fail over to another region in case of a regional outage. What should you do?",
+     "respuestacorrecta": ["s2"],
+       "preguntas": [{"id":"s0", "preg":"Deploy the application on two Compute Engine instances in the same project but in a different region. Use the first instance to serve traffic, and use the HTTP load balancing service to fail over to the standby instance in case of a disaster."},{"id":"s1", "preg":" Deploy the application on a Compute Engine instance. Use the instance to serve traffic, and use the HTTP load balancing service to fail over to an instance on your premises in case of a disaster."},{"id":"s2", "preg": " Deploy the application on two Compute Engine instance groups, each in the same project but in a different region. Use the first instance group to serve traffic, and use the HTTP load balancing service to fail over to the standby instance group in case of a disaster."},{"id":"s3", "preg": "Deploy the application on two Compute Engine instance groups, each in a separate project and a different region. Use the first instance group to serve traffic, and use the HTTP load balancing service to fail over to the standby instance group in case of a disaster."}]
+  },
+  {
+     "id":66,
+      "pregunta": "Your customer wants to capture multiple GBs of aggregate real-time key performance indicators (KPIs) from their game servers running on Google Cloud Platform and monitor the KPIs with low latency. How should they capture the KPIs?",
+     "respuestacorrecta": ["s1"],
+       "preguntas": [{"id":"s0", "preg":"Store time-series data from the game servers in Google Bigtable, and view it using Google Data Studio."},{"id":"s1", "preg":"Output custom metrics to Stackdriver from the game servers, and create a Dashboard in Stackdriver Monitoring Console to view them"},{"id":"s2", "preg": " Schedule BigQuery load jobs to ingest analytics files uploaded to Cloud Storage every ten minutes, and visualize the results in Google Data Studio."},{"id":"s3", "preg": "Insert the KPIs into Cloud Datastore entities, and run ad hoc analysis and visualizations of them in Cloud Datalab."}]
+  },
+  {
+     "id":67,
+      "pregunta": "You have a Python web application with many dependencies that requires 0.1 CPU cores and 128 MB of memory to operate in production. You want to monitor and maximize machine utilization. You also want to reliably deploy new versions of the application. Which set of steps should you take?",
+     "respuestacorrecta": ["s2"],
+       "preguntas": [{"id":"s0", "preg":" Perform the following: 1. Create a managed instance group with f1-micro type machines. 2. Use a startup script to clone the repository, check out the production branch, install the dependencies, and start the Python app. 3. Restart the instances to automatically deploy new production releases."},{"id":"s1", "preg":" Perform the following: 1. Create a managed instance group with n1-standard-1 type machines. 2. Build a Compute Engine image from the production branch that contains all of the dependencies and automatically starts the Python app. 3. Rebuild the Compute Engine image, and update the instance template to deploy new production releases."},{"id":"s2", "preg": "Perform the following: 1. Create a Google Kubernetes Engine (GKE) cluster with n1-standard-1 type machines. 2. Build a Docker image from the production branch with all of the dependencies, and tag it with the version number. 3. Create a Kubernetes Deployment with the imagePullPolicy set to 'IfNotPresent' in the staging namespace, and then promote it to the production namespace after testing."},{"id":"s3", "preg": "Perform the following: 1. Create a GKE cluster with n1-standard-4 type machines. 2. Build a Docker image from the master branch with all of the dependencies, and tag it with 'latest'. 3. Create a Kubernetes Deployment in the default namespace with the imagePullPolicy set to 'Always'. Restart the pods to automatically deploy new production releases."}]
+  },
+  {
+     "id":68,
+      "pregunta": "Your company wants to start using Google Cloud resources but wants to retain their on-premises Active Directory domain controller for identity management. What should you do?",
+     "respuestacorrecta": ["s1"],
+       "preguntas": [{"id":"s0", "preg":"Use the Admin Directory API to authenticate against the Active Directory domain controller."},{"id":"s1", "preg":" Use Google Cloud Directory Sync to synchronize Active Directory usernames with cloud identities and configure SAML SSO."},{"id":"s2", "preg": "Use Cloud Identity-Aware Proxy configured to use the on-premises Active Directory domain controller as an identity provider."},{"id":"s3", "preg": "Use Compute Engine to create an Active Directory (AD) domain controller that is a replica of the on-premises AD domain controller using Google Cloud Directory Sync."}]
+  },
+   {
+     "id":69,
+      "pregunta": "You are running a cluster on Kubernetes Engine (GKE) to serve a web application. Users are reporting that a specific part of the application is not responding anymore. You notice that all pods of your deployment keep restarting after 2 seconds. The application writes logs to standard output. You want to inspect the logs to find the cause of the issue. Which approach can you take?",
+     "respuestacorrecta": ["s1"],
+       "preguntas": [{"id":"s0", "preg":"Review the Stackdriver logs for each Compute Engine instance that is serving as a node in the cluster."},{"id":"s1", "preg":"Review the Stackdriver logs for the specific GKE container that is serving the unresponsive part of the application. "},{"id":"s2", "preg": "Connect to the cluster using gcloud credentials and connect to a container in one of the pods to read the logs."},{"id":"s3", "preg": "Review the Serial Port logs for each Compute Engine instance that is serving as a node in the cluster."}]
+  },
+   {
+     "id":70,
+      "pregunta": "You are using a single Cloud SQL instance to serve your application from a specific zone. You want to introduce high availability. What should you do?",
+     "respuestacorrecta": ["s3"],
+       "preguntas": [{"id":"s0", "preg":" Create a read replica instance in a different region"},{"id":"s1", "preg":"Create a failover replica instance in a different region"},{"id":"s2", "preg": " Create a read replica instance in the same region, but in a different zone "},{"id":"s3", "preg": "Create a failover replica instance in the same region, but in a different zone"}]
   }
-
-
 ]

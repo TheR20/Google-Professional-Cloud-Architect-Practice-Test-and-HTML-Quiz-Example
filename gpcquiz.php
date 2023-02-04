@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Title</title>
+    <title>Google Professional Cloud Architect Practice Exam</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <style>
@@ -20,12 +20,13 @@ font-weight:900;
     }
 
 </style>
-<body style="background-color:#F0EDE5;">
+<body style="background-color:#eaeaea ;">
     <br>
 
 
     <?$correctos = $_POST["respcor"]?>
     <? $numpre = $_POST["quesnum"]?>
+    <? $totalnumpre = $_POST["numpreguntas"]?>
 
 <div id="myData"></div>
 <script type="text/javascript">
@@ -53,7 +54,7 @@ let arraypreguntasrandom = [];
         return Math.floor(Math.random() * max) + 1;
     }
 
-let numeroRandom = generateRandomInteger(21);
+let numeroRandom = generateRandomInteger(28);
 
     //Traemos la data del Json y la metemos en divs
     function appendData(data)
@@ -188,13 +189,20 @@ createuniqueRan();
             var respuestanum = parseInt(respuestanum.value)
             var respuestaCorrectas= document.getElementById("respcor");
             var respuestacorrectasnumero = parseInt(respuestaCorrectas.value)
-        if(53 <= respuestanum)
+            var totalnum = "<?php echo $totalnumpre; ?>" ;
+            alert("Total "+totalnum +" Vas en la pregunta "+ respuestanum);
+        if(respuestanum >= totalnum)
         {
            // alert("YOU HAVE FINISHED YOUR EXAM!!! CONTRATS!");
             var botonchecars= document.getElementById("botonreiniciar").disabled = false;
             var botonenviar= document.getElementById("botonenviar").disabled = true;
             document.getElementById("resultfinal").innerHTML= "YOU HAVE FINISHED THE EXAM" +"<br>" + "CORRECT ANSWERS: " + respuestacorrectasnumero+ " OF "+respuestanum
         }
+    }
+
+    function regresar()
+    {
+        location.href = "https://megabanana.mx/gpc/gpcquiz2.php";
     }
 
 </script>
@@ -206,7 +214,7 @@ createuniqueRan();
 
 <div class="field has-addons has-addons-centered">
 <button onclick= "getCheckboxValue()" class="button is-success" id="botonchecar">Check my answer!</button>
-<button onclick= "getCheckboxValue()" class="button is-warning" id="botonreiniciar" disabled>Restart Exam!</button>
+<button onclick= "regresar()" class="button is-warning" id="botonreiniciar" >Restart Exam!</button>
 </div>
 <div>
 <div class="field has-addons has-addons-centered">
@@ -220,6 +228,7 @@ createuniqueRan();
 <input type="text"id="quesnum" class="label" value="<?php echo $correctos; ?>" name="respcor" >
 <label for="fname">Correct Ones</label>
 <input type="text" class="label" id="respcor" value="<?php echo $numpre; ?>" name="quesnum" >
+<input type="hidden" class="label" id="respcor" value="<?php echo $totalnumpre; ?>" name="numpreguntas" >
 <input type="submit" id="botonenviar" class="button is-info" value="Next Question" disabled>
 </form>
 <!--
