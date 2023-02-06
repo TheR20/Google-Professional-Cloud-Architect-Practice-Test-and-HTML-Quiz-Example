@@ -54,7 +54,7 @@ let arraypreguntasrandom = [];
         return Math.floor(Math.random() * max) + 1;
     }
 
-let numeroRandom = generateRandomInteger(28);
+let numeroRandom = generateRandomInteger(75);
 
     //Traemos la data del Json y la metemos en divs
     function appendData(data)
@@ -190,7 +190,7 @@ createuniqueRan();
             var respuestaCorrectas= document.getElementById("respcor");
             var respuestacorrectasnumero = parseInt(respuestaCorrectas.value)
             var totalnum = "<?php echo $totalnumpre; ?>" ;
-            alert("Total "+totalnum +" Vas en la pregunta "+ respuestanum);
+            //alert("Total "+totalnum +" Vas en la pregunta "+ respuestanum);
         if(respuestanum >= totalnum)
         {
            // alert("YOU HAVE FINISHED YOUR EXAM!!! CONTRATS!");
