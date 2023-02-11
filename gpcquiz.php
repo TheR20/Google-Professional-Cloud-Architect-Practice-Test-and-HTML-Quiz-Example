@@ -54,7 +54,7 @@ let arraypreguntasrandom = [];
         return Math.floor(Math.random() * max) + 1;
     }
 
-let numeroRandom = generateRandomInteger(75);
+let numeroRandom = generateRandomInteger(95);
 
     //Traemos la data del Json y la metemos en divs
     function appendData(data)

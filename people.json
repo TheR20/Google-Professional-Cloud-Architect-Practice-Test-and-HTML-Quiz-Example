@@ -105,7 +105,7 @@
   {
      "id":18,
        "pregunta": "Your company is forecasting a sharp increase in the number and size of Apache Spark and Hadoop jobs being run on your local datacenter. You want to utilize the cloud to help you scale this upcoming demand with the least amount of operations work and code change.Which product should you use?",
-      "respuestacorrecta": ["s0"],
+      "respuestacorrecta": ["s1"],
        "preguntas": [{"id":"s0", "preg":"Google Cloud Dataflow"},{"id":"s1", "preg":"Google Cloud Dataproc"},{"id":"s2", "preg": "Google Compute Engine"},{"id":"s3", "preg": "Google Kubernetes Engine"}]
   },
   {
@@ -461,5 +461,125 @@
       "pregunta": "You have deployed an application to Google Kubernetes Engine (GKE), and are using the Cloud SQL proxy container to make the Cloud SQL database available to the services running on Kubernetes. You are notified that the application is reporting database connection issues. Your company policies require a post- mortem. What should you do?",
      "respuestacorrecta": ["s3"],
        "preguntas": [{"id":"s0", "preg":"Use gcloud sql instances restart."},{"id":"s1", "preg":"Validate that the Service Account used by the Cloud SQL proxy container still has the Cloud Build Editor role."},{"id":"s2", "preg": "In the GCP Console, navigate to Stackdriver Logging. Consult logs for (GKE) and Cloud SQL "},{"id":"s3", "preg": "In the GCP Console, navigate to Cloud SQL. Restore the latest backup. Use kubectl to restart all pods."}]
+  },
+  {
+     "id":76,
+      "pregunta": "Your company pushes batches of sensitive transaction data from its application server VMs to Cloud Pub/Sub for processing and storage. What is the Google- recommended way for your application to authenticate to the required Google Cloud services?",
+     "respuestacorrecta": ["s0"],
+       "preguntas": [{"id":"s0", "preg":"Ensure that VM service accounts are granted the appropriate Cloud Pub/Sub IAM roles."},{"id":"s1", "preg":"Ensure that VM service accounts do not have access to Cloud Pub/Sub, and use VM access scopes to grant the appropriate Cloud Pub/Sub IAM roles."},{"id":"s2", "preg": "Generate an OAuth2 access token for accessing Cloud Pub/Sub, encrypt it, and store it in Cloud Storage for access from each VM."},{"id":"s3", "preg": "Create a gateway to Cloud Pub/Sub using a Cloud Function, and grant the Cloud Function service account the appropriate Cloud Pub/Sub IAM roles."}]
+  },
+  {
+     "id":77,
+      "pregunta": "You want to establish a Compute Engine application in a single VPC across two regions. The application must communicate over VPN to an on-premises network.How should you deploy the VPN?",
+     "respuestacorrecta": ["s3"],
+       "preguntas": [{"id":"s0", "preg":"Use VPC Network Peering between the VPC and the on-premises network."},{"id":"s1", "preg":"Expose the VPC to the on-premises network using IAM and VPC Sharing."},{"id":"s2", "preg": "Create a global Cloud VPN Gateway with VPN tunnels from each region to the on-premises peer gateway."},{"id":"s3", "preg": " Deploy Cloud VPN Gateway in each region. Ensure that each region has at least one VPN tunnel to the on-premises peer gateway."}]
+  },
+  {
+     "id":78,
+      "pregunta": "Your applications will be writing their logs to BigQuery for analysis. Each application should have its own table. Any logs older than 45 days should be removed.You want to optimize storage and follow Google-recommended practices. What should you do?",
+     "respuestacorrecta": ["s3"],
+       "preguntas": [{"id":"s0", "preg":" Configure the expiration time for your tables at 45 days"},{"id":"s1", "preg":"Make the tables time-partitioned, and configure the partition expiration at 45 days"},{"id":"s2", "preg": "Rely on BigQuery's default behavior to prune application logs older than 45 days"},{"id":"s3", "preg": "Create a script that uses the BigQuery command line tool (bq) to remove records older than 45 days"}]
+  },
+  {
+     "id":79,
+      "pregunta": "You want your Google Kubernetes Engine cluster to automatically add or remove nodes based on CPU load.What should you do?",
+     "respuestacorrecta": ["s0"],
+       "preguntas": [{"id":"s0", "preg":"Configure a HorizontalPodAutoscaler with a target CPU usage. Enable the Cluster Autoscaler from the GCP Console."},{"id":"s1", "preg":"Configure a HorizontalPodAutoscaler with a target CPU usage. Enable autoscaling on the managed instance group for the cluster using the gcloud command."},{"id":"s2", "preg": "Create a deployment and set the maxUnavailable and maxSurge properties. Enable the Cluster Autoscaler using the gcloud command."},{"id":"s3", "preg": "Create a deployment and set the maxUnavailable and maxSurge properties. Enable autoscaling on the cluster managed instance group from the GCP Console."}]
+  },
+  {
+     "id":80,
+      "pregunta": "You need to develop procedures to verify resilience of disaster recovery for remote recovery using GCP. Your production environment is hosted on-premises. You need to establish a secure, redundant connection between your on-premises network and the GCP network.What should you do?",
+     "respuestacorrecta": ["s1"],
+       "preguntas": [{"id":"s0", "preg":"Verify that Dedicated Interconnect can replicate files to GCP. Verify that direct peering can establish a secure connection between your networks if Dedicated Interconnect fails."},{"id":"s1", "preg":"Verify that Dedicated Interconnect can replicate files to GCP. Verify that Cloud VPN can establish a secure connection between your networks if Dedicated Interconnect fails."},{"id":"s2", "preg": "Verify that the Transfer Appliance can replicate files to GCP. Verify that direct peering can establish a secure connection between your networks if the Transfer Appliance fails."},{"id":"s3", "preg": "Verify that the Transfer Appliance can replicate files to GCP. Verify that Cloud VPN can establish a secure connection between your networks if the Transfer Appliance fails."}]
+  },
+  {
+     "id":81,
+      "pregunta": "Your company operates nationally and plans to use GCP for multiple batch workloads, including some that are not time-critical. You also need to use GCP services that are HIPAA-certified and manage service costs.How should you design to meet Google best practices?",
+     "respuestacorrecta": ["s1"],
+       "preguntas": [{"id":"s0", "preg":"Provision preemptible VMs to reduce cost. Discontinue use of all GCP services and APIs that are not HIPAA-compliant."},{"id":"s1", "preg":"Provision preemptible VMs to reduce cost. Disable and then discontinue use of all GCP services and APIs that are not HIPAA-compliant."},{"id":"s2", "preg": "Provision standard VMs in the same region to reduce cost. Discontinue use of all GCP services and APIs that are not HIPAA-compliant."},{"id":"s3", "preg": "Provision standard VMs to the same region to reduce cost. Disable and then discontinue use of all GCP services and APIs that are not HIPAA-compliant."}]
+  },
+  {
+     "id":82,
+      "pregunta": "Your customer wants to do resilience testing of their authentication layer. This consists of a regional managed instance group serving a public REST API that reads from and writes to a Cloud SQL instance.What should you do?",
+     "respuestacorrecta": ["s2"],
+       "preguntas": [{"id":"s0", "preg":"Engage with a security company to run web scrapers that look your for users' authentication data om malicious websites and notify you if any is found."},{"id":"s1", "preg":"Deploy intrusion detection software to your virtual machines to detect and log unauthorized access."},{"id":"s2", "preg": "Schedule a disaster simulation exercise during which you can shut off all VMs in a zone to see how your application behaves. "},{"id":"s3", "preg": "Configure a read replica for your Cloud SQL instance in a different zone than the master, and then manually trigger a failover while monitoring KPIs for our REST API."}]
+  },
+  {
+     "id":83,
+      "pregunta": "Your BigQuery project has several users. For audit purposes, you need to see how many queries each user ran in the last month. What should you do?",
+     "respuestacorrecta": ["s3"],
+       "preguntas": [{"id":"s0", "preg":"Connect Google Data Studio to BigQuery. Create a dimension for the users and a metric for the amount of queries per user."},{"id":"s1", "preg":" In the BigQuery interface, execute a query on the JOBS table to get the required information."},{"id":"s2", "preg": "Use 'bq show' to list all jobs. Per job, use 'bq ls' to list job information and get the required information."},{"id":"s3", "preg": "Use Cloud Audit Logging to view Cloud Audit Logs, and create a filter on the query operation to get the required information."}]
+  },
+  {
+     "id":84,
+      "pregunta": "You want to automate the creation of a managed instance group. The VMs have many OS package dependencies. You want to minimize the startup time for newVMs in the instance group.What should you do?",
+     "respuestacorrecta": ["s1"],
+       "preguntas": [{"id":"s0", "preg":"Use Terraform to create the managed instance group and a startup script to install the OS package dependencies."},{"id":"s1", "preg":"Create a custom VM image with all OS package dependencies. Use Deployment Manager to create the managed instance group with the VM image."},{"id":"s2", "preg": "Use Puppet to create the managed instance group and install the OS package dependencies."},{"id":"s3", "preg": " Use Deployment Manager to create the managed instance group and Ansible to install the OS package dependencies."}]
+  },
+  {
+     "id":85,
+      "pregunta": "Your company captures all web traffic data in Google Analytics 360 and stores it in BigQuery. Each country has its own dataset. Each dataset has multiple tables.You want analysts from each country to be able to see and query only the data for their respective countries.How should you configure the access rights?",
+     "respuestacorrecta": ["s0"],
+       "preguntas": [{"id":"s0", "preg":"Create a group per country. Add analysts to their respective country-groups. Create a single group 'all_analysts', and add all country-groups as members. Grant the 'all_analysts' group the IAM role of BigQuery jobUser. Share the appropriate dataset with view access with each respective analyst country-group"},{"id":"s1", "preg":"Create a group per country. Add analysts to their respective country-groups. Create a single group 'all_analysts', and add all country-groups as members. Grant the 'all_analysts' group the IAM role of BigQuery jobUser. Share the appropriate tables with view access with each respective analyst country-group."},{"id":"s2", "preg": "Create a group per country. Add analysts to their respective country-groups. Create a single group 'all_analysts', and add all country-groups as members. Grant the 'all_analysts' group the IAM role of BigQuery dataViewer. Share the appropriate dataset with view access with each respective analyst country- group."},{"id":"s3", "preg": "Create a group per country. Add analysts to their respective country-groups. Create a single group 'all_analysts', and add all country-groups as members. Grant the 'all_analysts' group the IAM role of BigQuery dataViewer. Share the appropriate table with view access with each respective analyst country-group."}]
+  },
+  {
+     "id":86,
+      "pregunta": "You have been engaged by your client to lead the migration of their application infrastructure to GCP. One of their current problems is that the on-premises high performance SAN is requiring frequent and expensive upgrades to keep up with the variety of workloads that are identified as follows: 20 TB of log archives retained for legal reasons; 500 GB of VM boot/data volumes and templates; 500 GB of image thumbnails; 200 GB of customer session state data that allows customers to restart sessions even if off-line for several days.Which of the following best reflects your recommendations for a cost-effective storage allocation?",
+     "respuestacorrecta": ["s1"],
+       "preguntas": [{"id":"s0", "preg":"Local SSD for customer session state data. Lifecycle-managed Cloud Storage for log archives, thumbnails, and VM boot/data volumes."},{"id":"s1", "preg":"Memcache backed by Cloud Datastore for the customer session state data. Lifecycle-managed Cloud Storage for log archives, thumbnails, and VM boot/data volumes."},{"id":"s2", "preg": "Memcache backed by Persistent Disk SSD storage for customer session state data. Assorted local SSD-backed instances for VM boot/data volumes. Cloud Storage for log archives and thumbnails."}]
+  },
+  {
+     "id":87,
+      "pregunta": "Your web application uses Google Kubernetes Engine to manage several workloads. One workload requires a consistent set of hostnames even after pod scaling and relaunches.Which feature of Kubernetes should you use to accomplish this?",
+     "respuestacorrecta": ["s0"],
+       "preguntas": [{"id":"s0", "preg":"StatefulSets"},{"id":"s1", "preg":"Role-based access control"},{"id":"s2", "preg": "Container environment variables"},{"id":"s3", "preg": "Persistent Volumes"}]
+  },
+  {
+     "id":88,
+      "pregunta": "You are using Cloud CDN to deliver static HTTP(S) website content hosted on a Compute Engine instance group. You want to improve the cache hit ratio.What should you do?",
+     "respuestacorrecta": ["s0"],
+       "preguntas": [{"id":"s0", "preg":"Customize the cache keys to omit the protocol from the key."},{"id":"s1", "preg":"Shorten the expiration time of the cached objects."},{"id":"s2", "preg": "Make sure the HTTP(S) header ג€Cache-Regionג€ points to the closest region of your users."},{"id":"s3", "preg": "Replicate the static content in a Cloud Storage bucket. Point CloudCDN toward a load balancer on that bucket."}]
+  },
+  {
+     "id":89,
+      "pregunta": "Your architecture calls for the centralized collection of all admin activity and VM system logs within your project.How should you collect these logs from both VMs and services?",
+     "respuestacorrecta": ["s0"],
+       "preguntas": [{"id":"s0", "preg":"All admin and VM system logs are automatically collected by Stackdriver."},{"id":"s1", "preg":"Stackdriver automatically collects admin activity logs for most services. The Stackdriver Logging agent must be installed on each instance to collect system logs."},{"id":"s2", "preg": "Launch a custom syslogd compute instance and configure your GCP project and VMs to forward all logs to it."},{"id":"s3", "preg": "Install the Stackdriver Logging agent on a single compute instance and let it collect all audit and access logs for your environment."}]
+  },
+  {
+     "id":90,
+      "pregunta": "You have an App Engine application that needs to be updated. You want to test the update with production traffic before replacing the current application version.What should you do?",
+     "respuestacorrecta": ["s1"],
+       "preguntas": [{"id":"s0", "preg":"Deploy the update using the Instance Group Updater to create a partial rollout, which allows for canary testing."},{"id":"s1", "preg":"Deploy the update as a new version in the App Engine application, and split traffic between the new and current versions."},{"id":"s2", "preg": "Deploy the update in a new VPC, and use Google's global HTTP load balancing to split traffic between the update and current applications."},{"id":"s3", "preg": "Deploy the update as a new App Engine application, and use Google's global HTTP load balancing to split traffic between the new and current applications."}]
+  },
+   {
+     "id":91,
+      "pregunta": "All Compute Engine instances in your VPC should be able to connect to an Active Directory server on specific ports. Any other traffic emerging from your instances is not allowed. You want to enforce this using VPC firewall rules.How should you configure the firewall rules?",
+     "respuestacorrecta": ["s0"],
+       "preguntas": [{"id":"s0", "preg":"Create an egress rule with priority 1000 to deny all traffic for all instances. Create another egress rule with priority 100 to allow the Active Directory traffic for all instances. "},{"id":"s1", "preg":"Create an egress rule with priority 100 to deny all traffic for all instances. Create another egress rule with priority 1000 to allow the Active Directory traffic for all instances."},{"id":"s2", "preg": " Create an egress rule with priority 1000 to allow the Active Directory traffic. Rely on the implied deny egress rule with priority 100 to block all traffic for all instances.."},{"id":"s3", "preg": "Create an egress rule with priority 100 to allow the Active Directory traffic. Rely on the implied deny egress rule with priority 1000 to block all traffic for all instances."}]
+  },
+   {
+     "id":92,
+      "pregunta": "Your customer runs a web service used by e-commerce sites to offer product recommendations to users. The company has begun experimenting with a machine learning model on Google Cloud Platform to improve the quality of results.What should the customer do to improve their model's results over time?",
+     "respuestacorrecta": ["s3"],
+       "preguntas": [{"id":"s0", "preg":"Export Cloud Machine Learning Engine performance metrics from Stackdriver to BigQuery, to be used to analyze the efficiency of the model."},{"id":"s1", "preg":"SBuild a roadmap to move the machine learning model training from Cloud GPUs to Cloud TPUs, which offer better results."},{"id":"s2", "preg": "Monitor Compute Engine announcements for availability of newer CPU architectures, and deploy the model to them as soon as they are available for additional performance.."},{"id":"s3", "preg": "Save a history of recommendations and results of the recommendations in BigQuery, to be used as training data"}]
+  },
+   {
+     "id":93,
+      "pregunta": "A development team at your company has created a dockerized HTTPS web application. You need to deploy the application on Google Kubernetes Engine (GKE) and make sure that the application scales automatically.How should you deploy to GKE?",
+     "respuestacorrecta": ["s0"],
+       "preguntas": [{"id":"s0", "preg":"Use the Horizontal Pod Autoscaler and enable cluster autoscaling. Use an Ingress resource to load-balance the HTTPS traffic."},{"id":"s1", "preg":"Use the Horizontal Pod Autoscaler and enable cluster autoscaling on the Kubernetes cluster. Use a Service resource of type LoadBalancer to load-balance the HTTPS traffic."},{"id":"s2", "preg": "Enable autoscaling on the Compute Engine instance group. Use an Ingress resource to load-balance the HTTPS traffic."},{"id":"s3", "preg": "Enable autoscaling on the Compute Engine instance group. Use a Service resource of type LoadBalancer to load-balance the HTTPS traffic."}]
+  },
+   {
+     "id":94,
+      "pregunta": "You need to design a solution for global load balancing based on the URL path being requested. You need to ensure operations reliability and end-to-end in- transit encryption based on Google best practices.What should you do?",
+     "respuestacorrecta": ["s1"],
+       "preguntas": [{"id":"s0", "preg":"Create a cross-region load balancer with URL Maps."},{"id":"s1", "preg":"Create an HTTPS load balancer with URL Maps"},{"id":"s2", "preg": "Create appropriate instance groups and instances. Configure SSL proxy load balancing.."},{"id":"s3", "preg": "Create a global forwarding rule. Configure SSL proxy load balancing."}]
+  },
+   {
+     "id":95,
+      "pregunta": "You have an application that makes HTTP requests to Cloud Storage. Occasionally the requests fail with HTTP status codes of 5xx and 429.How should you handle these types of errors?",
+     "respuestacorrecta": ["s0"],
+       "preguntas": [{"id":"s0", "preg":"Use gRPC instead of HTTP for better performance."},{"id":"s1", "preg":"Implement retry logic using a truncated exponential backoff strategy."},{"id":"s2", "preg": "Make sure the Cloud Storage bucket is multi-regional for geo-redundancy.."},{"id":"s3", "preg": "Monitor https://status.cloud.google.com/feed.atom and only make requests if Cloud Storage is not reporting an incident."}]
   }
 ]
