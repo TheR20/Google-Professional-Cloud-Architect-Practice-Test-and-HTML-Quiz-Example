@@ -9,6 +9,6 @@ answers comes from this web https://www.examtopics.com/exams/google/professional
 
 To use the Quiz locally you need to desable the cors or just update the project to a server and use it without problems,
 Or if you want to use the Quiz I have upload it to my own server. free to use it annd practice.
-https://megabanana.mx/gpc/gpcquiz.php
+https://megabanana.mx/gpc/gpcquiz2.php
 
 Hope you enjoy it.
