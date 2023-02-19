@@ -37,6 +37,7 @@ let tamanioarrayrespuestas = "";
 let tamaniorespuestas = "";
 let arraypreguntas = [];
 let arraypreguntasrandom = [];
+let numPreguntasRandom = 0
     fetch('people.json')
         .then(function (response) {
             return response.json();
@@ -54,11 +55,14 @@ let arraypreguntasrandom = [];
         return Math.floor(Math.random() * max) + 1;
     }
 
-let numeroRandom = generateRandomInteger(95);
+    //alert("Num preguntas " + numPreguntasRandom)
+
 
     //Traemos la data del Json y la metemos en divs
     function appendData(data)
     {
+        // alert("Num preguntas " + data.length)
+        let numeroRandom = generateRandomInteger(data.length);
         let mainContainer = document.getElementById("myData");
         let div = document.createElement("div");
         linebreak2 = document.createElement("br");
