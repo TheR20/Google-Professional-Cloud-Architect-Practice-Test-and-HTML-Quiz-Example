@@ -208,6 +208,10 @@ createuniqueRan();
     {
         location.href = "https://megabanana.mx/gpc/gpcquiz2.php";
     }
+    function moreinfo()
+    {
+        window.open("https://megabanana.mx/gpc/moreinfo.html");
+    }
 
 </script>
 
@@ -218,6 +222,7 @@ createuniqueRan();
 
 <div class="field has-addons has-addons-centered">
 <button onclick= "getCheckboxValue()" class="button is-success" id="botonchecar">Check my answer!</button>
+<button onclick= moreinfo() class="button is-info"  id="botonmoreinfo" >Questions with * at the beginning!</button>
 <button onclick= "regresar()" class="button is-warning" id="botonreiniciar" >Restart Exam!</button>
 </div>
 <div>
